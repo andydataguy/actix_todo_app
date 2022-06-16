@@ -1,4 +1,8 @@
 use super::base::Base;
+use super::traits::create::Create;
+use super::traits::get::Get;
+use super::traits::edit::Edit;
+use super::traits::delete::Delete;
 
 /// The `Pending` struct defines a to-do item which is meant to be considered "pending"
 /// 
@@ -26,3 +30,8 @@ impl Pending {
     return Pending {super_struct: base};
   }
 }
+
+impl Get for Pending {}
+impl Delete for Pending {}
+impl Edit for Pending {}
+impl Create for Pending {}

@@ -1,4 +1,7 @@
 use super::base::Base;
+use super::traits::get::Get;
+use super::traits::edit::Edit;
+use super::traits::delete::Delete;
 
 /// The `Done` struct defines a to-do item which is meant to be considered "done" 
 /// 
@@ -22,8 +25,12 @@ impl Done {
 /// (Done): A new `Done` struct to represent a to-do item with the status of "done"
 
   pub fn new(input_title: &str) -> Done {
+
     let base: Base = Base::new(input_title, "done");
     return Done {super_struct: base};
   }
 }
 
+impl Get for Done {}
+impl Delete for Done {}
+impl Edit for Done {}
