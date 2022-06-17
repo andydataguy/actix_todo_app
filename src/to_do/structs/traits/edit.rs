@@ -1,32 +1,19 @@
-// Create scaffolding for CRUD trait implementations. 
-// Test that files all connect properly before implementing business logic
+use serde_json::Map;
+use serde_json::value::Value;
+use serde_json::json;
 
-// Start with making functions that implements changes for each status (done and pending)
+use crate::state::write_to_file;
 
-/// Trait for editing the status of todo items 
 pub trait Edit {
-
-/// Function to change the status of a todo item to "done" 
-/// 
-/// # Arguments
-/// * title(&str): Provide title of the todo item to be changed to "done"
-/// 
-/// # Returns
-/// None: Currently prints confirmation of `set_to_done` function completion
-
-  fn set_to_done(&self, title: &str) {
-    println!("Todo Item {} is being marked as done!", title);
+  fn set_to_done(&self, title: &String, state: &mut Map<String, Value>) {
+    state.insert(title.to_string(), json!(String::from("done")));
+    write_to_file("./state.json", state);
+    println!("\n\n{} is being set to done\n\n", title);
   }
 
-/// Function to change the status of a todo item to "pending" 
-/// 
-/// # Arguments
-/// * title(&str): Provide title of the todo item to be changed to "pending"
-/// 
-/// # Returns
-/// None: Currently prints confirmation of `set_to_pending` function completion
-
-  fn set_to_pending(&self, title: &str) {
-    println!("Todo Item {} is being marked as pending!", title);
+  fn set_to_pending(&self, title: &String, state: &mut Map<String, Value>) {
+    state.insert(title.to_string(), json!(String::from("pending")));
+    write_to_file("./state.json", state);
+    println!("\n\n{} is being set to pending\n\n", title);
   }
 }

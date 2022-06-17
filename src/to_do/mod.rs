@@ -1,7 +1,6 @@
 pub mod structs;
-
-use structs::done::Done;
-use structs::pending::Pending;
+pub use structs::done::Done;
+pub use structs::pending::Pending;
 
 /// List of to-do item types that can be added to the to-do list. 
 /// Add new types to the list of types in the ItemTypes enum. 
@@ -12,7 +11,7 @@ use structs::pending::Pending;
 
 pub enum ItemTypes {
   Pending(Pending),
-  Done(Done),
+  Done(Done)
 }
 
 /// Factory function for creating to-do items. 
