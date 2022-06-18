@@ -11,13 +11,13 @@ use serde_json::json;
 /// Creates a Map from files so that we can easily access the data. 
 ///
 /// # Arguments
-/// * file_name (&str): the path to the file being read
+/// * file_name (String): the path to the file being read
 ///
 /// # Returns
 /// (Map<String, Value>): returns the contents of the file as a Map
-pub fn read_file(file_name: &str) -> Map<String, Value> {
+pub fn read_file(file_name: String) -> Map<String, Value> {
 
-  let mut file = File::open(file_name.to_string()).unwrap(); 
+  let mut file = File::open(file_name).unwrap(); 
 
   // Currently using the unwrap function for simplicity. 
   // If there is an error here. There's no point in continuing the program. 
@@ -32,7 +32,7 @@ pub fn read_file(file_name: &str) -> Map<String, Value> {
   let json: Value = serde_json::from_str(&buffer).unwrap(); 
 
   // JSON value must be an object in order to be returned within a Map
-  // This value is then cloned because if not we'd be stuck with a shared reference.
+  // Value is then cloned because if not we'd be stuck with a shared reference.
   let state: Map<String, Value> = json.as_object().unwrap().clone(); 
   return state;
 }
@@ -40,16 +40,16 @@ pub fn read_file(file_name: &str) -> Map<String, Value> {
 /// This function writes a JSON map to file on disk.
 ///
 /// # Arguments
-/// * file_name (&str): the path to the file being read
+/// * file_name (String): the path to the file being read
 /// * state (&mut Map<String, Value>): the data being written to disk
 ///
 /// # Returns
 /// None
-pub fn write_to_file(file_name: &str, state: &mut Map<String, Value>) {
+pub fn write_to_file(file_name: String, state: &mut Map<String, Value>) {
 
   // Macro converts Map to JSON value 
   let new_buffer = json!(state); 
 
   // turns the JSON value into a string and writes it to the file
-  fs::write(file_name.to_string(), new_buffer.to_string()).expect("Unable to write file"); 
+  fs::write(file_name, new_buffer.to_string()).expect("Unable to write file"); 
 }

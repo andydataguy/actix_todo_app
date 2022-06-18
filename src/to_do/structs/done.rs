@@ -19,14 +19,14 @@ impl Done {
 /// This avoids errors from inconsistent naming convention.
 /// 
 /// # Arguments
-/// * input_title (&str): Define the to-do item with a descriptive title
+/// * input_title (String): Define the to-do item with a descriptive title
 /// 
 /// # Returns
 /// (Done): A new `Done` struct to represent a to-do item with the status of "done"
 
-  pub fn new(input_title: &str) -> Done {
-
-    let base: Base = Base::new(input_title, "done");
+  pub fn new(input_title: String) -> Done {
+    let input_status = String::from("done");
+    let base: Base = Base::new(input_title, input_status);
     return Done {super_struct: base};
   }
 }

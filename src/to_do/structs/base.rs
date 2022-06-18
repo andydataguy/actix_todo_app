@@ -17,14 +17,14 @@ impl Base {
 /// initialized Base struct (to-do item). 
 /// 
 /// # Arguments
-/// * input_title (&str): Input the desired name for the todo item
-/// * input_status (&str): Input the current status for the todo item
+/// * input_title (String): Input the desired name for the todo item
+/// * input_status (String): Input the current status for the todo item
 /// 
 /// # Returns 
 /// (Base): A new Base struct with the desired title and status
 
 
-  pub fn new(input_title: &str, input_status: &str) -> Base {
+  pub fn new(input_title: String, input_status: String) -> Base {
     return Base {title: input_title.to_string(), 
                  status: input_status.to_string()}
   }

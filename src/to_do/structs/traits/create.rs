@@ -23,7 +23,7 @@ pub trait Create {
     // inserts the title and status from the map to be delivered as JSON to the state file
     state.insert(title.to_string(), json!(status));
 
-    write_to_file("./state.json", state);
+    write_to_file(String::from("./state.json"), state);
     println!("\n\nThe to do item {} has been created \n\n", title);
 
   }

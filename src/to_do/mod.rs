@@ -18,14 +18,14 @@ pub enum ItemTypes {
 /// Add new types to the if-else statement in the factory function.
 /// 
 /// # Arguments
-/// * item_type (&str): The type of to-do item to create based on desired status.
-/// * item_title (&str): A descriptive title of the to-do item.
+/// * item_type (&String): The type of to-do item to create based on desired status.
+/// * item_title (String): A descriptive title of the to-do item.
 /// 
 /// # Returns
 /// (Result<ItemTypes, &'templates str>): The created to-do item with proper matching
 
 
-pub fn to_do_factory(item_type: &str, item_title: &str) 
+pub fn to_do_factory(item_type: &String, item_title: String) 
   -> Result<ItemTypes, &'static str> {
 
     if item_type == "pending" {
