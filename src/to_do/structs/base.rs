@@ -4,7 +4,7 @@ use serde::Serialize;
 /// other todo items that we create. We separate the base struct from the
 /// other status todo items for easier maintenance and greater flexibility.
 /// 
-/// # Attributes
+/// ### Attributes
 /// * title (string): Define the todo item with a descriptive title
 /// * status (string): Define the status of the todo item
 
@@ -16,14 +16,14 @@ pub struct Base {
 
 impl Base {
 
-/// This impl block takes two arguments and returns a newly 
-/// initialized Base struct (to-do item). 
+/// Function takes two arguments (title/status) and returns a newly 
+/// initialized Base to do item struct. 
 /// 
-/// # Arguments
+/// ### Arguments
 /// * input_title (String): Input the desired name for the todo item
 /// * input_status (String): Input the current status for the todo item
 /// 
-/// # Returns 
+/// ### Returns 
 /// (Base): A new Base struct with the desired title and status
 
 

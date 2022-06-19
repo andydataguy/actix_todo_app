@@ -6,7 +6,7 @@ use super::traits::delete::Delete;
 
 /// The `Pending` struct defines a to-do item which is meant to be considered "pending"
 /// 
-/// # Attributes
+/// ### Attributes
 /// * super_struct (Base): Inherited struct from the Base struct to house key attributes
 
 pub struct Pending {
@@ -19,10 +19,10 @@ impl Pending {
 /// It automatically locks down the status to "pending." 
 /// This avoids errors from inconsistent naming convention.
 /// 
-/// # Arguments
+/// ### Arguments
 /// * input_title (String): Define the to-do item with a descriptive title
 /// 
-/// # Returns
+/// ### Returns
 /// (Pending): A new `Pending` struct to represent a to-do item with the status of "pending"
 
   pub fn new(input_title: String) -> Pending {

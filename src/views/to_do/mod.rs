@@ -1,14 +1,16 @@
 use actix_web::web;
 mod create;
 mod get;
+mod utils;
 use super::path::Path;
+
 
 /// This function adds the to do item views to the web server.
 ///
-/// # Arguments
+/// ### Arguments
 /// * (&mut web::ServiceConfig): reference to the app for configuration
 ///
-/// # Returns
+/// ### Returns
 /// None
 pub fn item_factory(app: &mut web::ServiceConfig) {
 

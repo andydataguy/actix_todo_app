@@ -1,13 +1,18 @@
 use std::vec::Vec;
 
+use actix_web::{Responder, Error, HttpResponse, HttpRequest};
 use serde::Serialize;
+use futures::future::{ready, Ready};
+
 use crate::to_do::ItemTypes;
 use crate::to_do::structs::base::Base;
 
-/// This struct takes the `Base` structs and serializes them into JSON for the client to use.
-/// The `Serialize` macro enables the Struct attributes to be serialized into JSON.
+/// This struct takes a vector of `Base` structs and serializes them into JSON.
+/// It expects a mapping of each item title/status and returns a list of each item
+/// as well as a count of how many items are included for each status.
+/// Uses the `Serialize` macro to enable the Struct attributes to be converted into JSON for easy use.
 ///
-/// # Parameters
+/// ### Parameters
 /// * pending_items (Vec<Base>): vector containing the statuses and titles of pending items
 /// * done_items (Vec<Base>): vector containing the statuses and titles of the done items
 /// * pending_item_count (i8): the number of pending items stored
@@ -26,10 +31,10 @@ impl ToDoItems {
 /// This function performs the logic to build the `ToDoItems` struct from the 
 /// list of all the `Base` structs in a format ready to be serialized into JSON
 ///
-/// # Arguments
+/// ### Arguments
 /// * input_items (Vec<ItemTypes>): the saved to do items super structs to be packaged
 ///
-/// # Returns
+/// ### Returns
 /// * (ToDoItems): Struct containing the list of items and counts organized by pending and done status
 
   pub fn new(input_items: Vec<ItemTypes>) -> ToDoItems {
@@ -50,5 +55,27 @@ impl ToDoItems {
       pending_item_count: pending_count,
       done_item_count: done_count,
     }
+  }
+}
+
+impl Responder for ToDoItems {
+  type Error = Error;
+  type Future = Ready<Result<HttpResponse, Error>>; 
+
+/// This function gets fired when the struct is being returned in an actix view.
+/// Includes a type alias which denotes that the future is immediately ready with a value.
+/// Inside the Future type is a `Result` which can be either an HttpResponse or an Error.
+///
+/// ### Arguments
+/// * _req (&HttpRequest): the request belonging to the view
+///
+/// ### Returns
+/// * (Self::Future): an OK HTTP response with the serialized struct in the body
+
+  fn respond_to(self, _req: &HttpRequest) -> Self::Future {
+    let body = serde_json::to_string(&self).unwrap();
+    ready(Ok(HttpResponse::Ok()
+      .content_type("application/json")
+      .body(body)))
   }
 }

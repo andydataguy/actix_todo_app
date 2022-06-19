@@ -10,12 +10,12 @@ pub trait Create {
 /// Function to create a new todo item. 
 /// Add status update functionality later. 
 /// 
-/// # Arguments
+/// ### Arguments
 /// * title(&String): Provide a descriptive title for the todo item
 /// * status(&String): Provide a status for the todo item
 /// * state(&mut serde::value::Value): The loaded value from the state file
 /// 
-/// # Returns
+/// ### Returns
 /// None: Currently prints confirmation of `create` function completion
 
   fn create(&self, title: &String, status: &String, state: &mut Map<String, Value>) {

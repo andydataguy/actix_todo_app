@@ -7,11 +7,11 @@ pub trait Get {
 
 /// Get function retrieves a todo item and prints information to the console
 /// 
-/// # Arguments
+/// ### Arguments
 /// * title(&String): Provide title of the todo item to be retrieved
 /// * status(serde::value::Value): The loaded value from the state file
 /// 
-/// # Returns
+/// ### Returns
 /// None: Currently prints confirmation of 'get` function completion or failure
 
   fn get(&self, title: &String, state: &Map<String, Value>) {

@@ -10,10 +10,10 @@ use serde_json::json;
 /// Takes filepath as a string and uses the standard library to open it.
 /// Creates a Map from files so that we can easily access the data. 
 ///
-/// # Arguments
+/// ### Arguments
 /// * file_name (String): the path to the file being read
 ///
-/// # Returns
+/// ### Returns
 /// (Map<String, Value>): returns the contents of the file as a Map
 pub fn read_file(file_name: String) -> Map<String, Value> {
 
@@ -39,11 +39,11 @@ pub fn read_file(file_name: String) -> Map<String, Value> {
 
 /// This function writes a JSON map to file on disk.
 ///
-/// # Arguments
+/// ### Arguments
 /// * file_name (String): the path to the file being read
 /// * state (&mut Map<String, Value>): the data being written to disk
 ///
-/// # Returns
+/// ### Returns
 /// None
 pub fn write_to_file(file_name: String, state: &mut Map<String, Value>) {
 

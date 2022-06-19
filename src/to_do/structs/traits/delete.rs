@@ -9,11 +9,11 @@ pub trait Delete {
 
 /// Function to delete a new todo item. 
 /// 
-/// # Arguments
+/// ### Arguments
 /// * title(&String): Provide a descriptive title for the todo item
 /// * state(&mut serde::value::Value): The loaded value from the state file
 /// 
-/// # Returns
+/// ### Returns
 /// None: Currently prints confirmation of `delete` function completion
 
   fn delete(&self, title: &String, state: &mut Map<String, Value>) {

@@ -9,10 +9,10 @@ use crate::processes::process_input;
 
 /// This view creates a to do item and saves it in the state.json file.
 ///
-/// # Arguments
+/// ### Arguments
 /// * req (HttpRequest): the HTTP request passed into the view
 ///
-/// # Returns
+/// ### Returns
 /// * (String): message to be sent back to the user
 pub async fn create(req: HttpRequest) -> String {
 

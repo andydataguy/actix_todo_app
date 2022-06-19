@@ -1,4 +1,4 @@
-/// # Creating new Status options
+/// ### Creating new Status options
 /// There is a `base` module set to private to avoid naming conflicts.
 /// Duplicate the `done` file to add additional status options.
 /// Configure as desired.

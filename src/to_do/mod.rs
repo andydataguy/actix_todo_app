@@ -5,7 +5,7 @@ pub use structs::pending::Pending;
 /// List of to-do item types that can be added to the to-do list. 
 /// Add new types to the list of types in the ItemTypes enum. 
 /// 
-/// # enum ItemTypes
+/// ### enum ItemTypes
 /// * Pending(structs::pending::Pending): To-do item with 'Pending' status.
 /// * Done(structs::done::Done): To-do item with 'Done' status.
 
@@ -15,14 +15,15 @@ pub enum ItemTypes {
 }
 
 /// Factory function for creating to-do items. 
-/// Add new types to the if-else statement in the factory function.
+/// Handles business logic for separating items by status.
+/// Currently contains options "pending", "done," or else throws an `Err`
 /// 
-/// # Arguments
+/// ### Arguments
 /// * item_type (&String): The type of to-do item to create based on desired status.
 /// * item_title (String): A descriptive title of the to-do item.
 /// 
-/// # Returns
-/// (Result<ItemTypes, &'templates str>): The created to-do item with proper matching
+/// ### Returns
+/// (Result<ItemTypes, &'static str>): The created to-do item with proper matching
 
 
 pub fn to_do_factory(item_type: &String, item_title: String) 

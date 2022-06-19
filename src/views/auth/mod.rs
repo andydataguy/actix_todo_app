@@ -5,10 +5,10 @@ use super::path::Path;
 
 /// This function adds the auth views to the web server.
 ///
-/// # Arguments
+/// ### Arguments
 /// * (&mut web::ServiceConfig): reference to the app for configuration
 ///
-/// # Returns
+/// ### Returns
 /// None
 
 pub fn auth_factory(app: &mut web::ServiceConfig) {

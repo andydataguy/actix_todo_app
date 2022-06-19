@@ -2,8 +2,8 @@ use actix_web::{App, HttpServer};
 mod state;
 mod to_do;
 mod views;
-mod processes;
 mod json_serialization;
+mod processes;
 
 
 #[actix_rt::main]
