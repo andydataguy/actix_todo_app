@@ -6,9 +6,8 @@ use serde_json::Map;
 use serde_json::value::Value;
 use serde_json::json;
 
-/// The `read_file` function reads a JSON file from disk.
-/// Takes filepath as a string and uses the standard library to open it.
-/// Creates a Map from files so that we can easily access the data. 
+/// This function reads a JSON file from storage.
+/// It takes the file path as a string and creates a Map that can be easily serialized into JSON
 ///
 /// ### Arguments
 /// * file_name (String): the path to the file being read

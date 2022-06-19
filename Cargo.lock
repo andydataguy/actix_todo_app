@@ -298,6 +298,17 @@ dependencies = [
 ]
 
 [[package]]
+name = "actix_todo_app"
+version = "0.1.0"
+dependencies = [
+ "actix-rt",
+ "actix-web",
+ "futures",
+ "serde",
+ "serde_json",
+]
+
+[[package]]
 name = "addr2line"
 version = "0.17.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -464,17 +475,6 @@ dependencies = [
  "num-traits",
  "time",
  "winapi 0.3.9",
-]
-
-[[package]]
-name = "cli_todo_app"
-version = "0.1.0"
-dependencies = [
- "actix-rt",
- "actix-web",
- "futures",
- "serde",
- "serde_json",
 ]
 
 [[package]]

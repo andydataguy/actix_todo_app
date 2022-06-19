@@ -5,7 +5,7 @@ use crate::to_do::{ItemTypes, to_do_factory};
 use crate::json_serialization::to_do_items::ToDoItems;
 
 
-/// Gets all the to do items from the state JSON file and processes them to be serialized into JSON.
+/// This function gets the current state of our to do items from the `state.json` file and processes them to be serialized into JSON.
 /// Returns a `ToDoItems` struct which contains a count and list of each item separated by status. 
 ///
 /// ### Arguments

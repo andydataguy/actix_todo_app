@@ -1,5 +1,5 @@
 [package]
-name = "cli_todo_app"
+name = "actix_todo_app"
 version = "0.1.0"
 edition = "2021"
 

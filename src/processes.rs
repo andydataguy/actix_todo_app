@@ -10,14 +10,14 @@ use super::to_do::structs::traits::delete::Delete;
 use super::to_do::structs::traits::edit::Edit;
 
 
-/// Input function that acts as an entry to running commands on the to do items.
-/// This match statement is mapped to other match statements to provide more flexibility. 
-/// When we're ready to add more status types, one can simply add a line to the match statement.
+/// Function acts as an entry point for commands sent by the server. 
+/// A match statement is used to determine which command was sent and to execute the 
+/// appropriate functions.
 /// 
 /// ### Arguments
-/// * item(ItemTypes): This is a to do item that will have a command completed on it
+/// * item(ItemTypes): An enum that defines the status of a to do item
 /// * command(String): Desired command to perform on a particular to do item
-/// * state(&serde::value::Value): The current state of the to do item for the program
+/// * state(&serde::value::Value): The current item state pulled from storage as a `Map<String, Value>`
 /// 
 /// ### Returns
 /// None
