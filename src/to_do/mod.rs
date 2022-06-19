@@ -13,8 +13,8 @@ pub enum ItemTypes {
   Done(Done)
 }
 
-/// Function that handles the business logic for labeling items by status.
-/// Returns an error if the given status is not found
+/// Function that handles the business logic for creating new to do items and
+///  labeling items by status. Returns an error if the given status is not found
 /// 
 /// ### Arguments
 /// * item_type (&String): The type of to-do item to create based on desired status.

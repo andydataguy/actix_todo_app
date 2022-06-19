@@ -302,6 +302,7 @@ name = "actix_todo_app"
 version = "0.1.0"
 dependencies = [
  "actix-rt",
+ "actix-service",
  "actix-web",
  "futures",
  "serde",

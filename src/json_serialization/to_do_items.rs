@@ -28,8 +28,10 @@ pub struct ToDoItems {
 
 impl ToDoItems {
 
-/// This function performs the logic to build the `ToDoItems` struct from the 
-/// list of all the `Base` structs in a format ready to be serialized into JSON
+/// This function performs the logic needed to build a `ToDoItems` struct from the 
+/// list of all the `Base` structs in storage to be serialized into JSON.
+/// It utilizes a match statement to separate the retrieved items by status, 
+/// and then uses a `len()` method to count the total number of items for each status.
 ///
 /// ### Arguments
 /// * input_items (Vec<ItemTypes>): the saved to do items super structs to be packaged

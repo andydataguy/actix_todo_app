@@ -8,6 +8,10 @@ pub struct Path {
 }
 
 
+
+
+impl Path {
+
 /// This function defines a full path based on the struct's prefix and the String passed in.
 /// We take a &self so the same struct instance can be used multiple times to define multiple URLs
 ///
@@ -17,12 +21,11 @@ pub struct Path {
 /// ### Use
 /// To use this in a route, we have to reference it:
 ///
+/// ### Example
 /// ```rust
 /// let path = Path{base: String::from("/base/")};
 /// app.route(&path.define(String::from("tail/path")), web::get().to(login::login))
 /// ```
-
-impl Path {
 
   pub fn define(&self, following_path: String) -> String {
 
