@@ -6,6 +6,6 @@
 /// Be sure to include the `pub` keyword to allow the `main.rs` file to use the new struct.
 
 pub mod traits;
-mod base; 
+pub mod base; 
 pub mod done;
 pub mod pending;

@@ -3,6 +3,7 @@ mod state;
 mod to_do;
 mod views;
 mod processes;
+mod json_serialization;
 
 
 #[actix_rt::main]
