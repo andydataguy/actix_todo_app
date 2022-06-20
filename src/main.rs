@@ -32,6 +32,7 @@ async fn main() -> std::io::Result<()> {
         // processes the request and allows response to be returned asynchronously
         let fut = srv.call(req);
         async {
+          
           let result = fut.await?;
           Ok(result)
         }

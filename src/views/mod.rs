@@ -2,6 +2,7 @@ use actix_web::web;
 mod path; 
 mod auth;
 mod to_do;
+mod app;
 pub mod token;
 
 /// This function acts as an entry point to connect the HTTP server with the 
@@ -17,4 +18,5 @@ pub mod token;
 pub fn views_factory(app: &mut web::ServiceConfig) {
   auth::auth_factory(app);
   to_do::item_factory(app);
+  app::app_factory(app);
 }
