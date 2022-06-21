@@ -12,7 +12,7 @@ use actix_web::dev::ServiceRequest;
 
 fn check_password(password: String) -> Result<String, &'static str> {
   if password == "token" {
-    return Ok(password)
+      return Ok(password)
   }
   return Err("token not authorized")
 }
@@ -28,14 +28,15 @@ fn check_password(password: String) -> Result<String, &'static str> {
 /// and an error message if not.
 
 fn extract_header_token(request: &ServiceRequest) -> Result<String, &'static str> {
+
   match request.headers().get("user-token") {
-    Some(token) => {
-      match token.to_str() {
-        Ok(processed_password) => Ok(String::from(processed_password)),
-        Err(_processed_password) => Err("There was an error processing token")
-      }
-    },
-    None => Err("No token provided")
+      Some(token) => {
+          match token.to_str() {
+              Ok(processed_password) => Ok(String::from(processed_password)),
+              Err(_processed_password) => Err("there was an error processing token")
+          }
+      },
+      None => Err("there is no token")
   }
 }
 
@@ -50,7 +51,12 @@ fn extract_header_token(request: &ServiceRequest) -> Result<String, &'static str
 
 pub fn process_token(request: &ServiceRequest) -> Result<String, &'static str> {
   match extract_header_token(request) {
-    Ok(token) => check_password(token),
-    Err(message) => Err(message)
+      Ok(token) => {
+          match check_password(token) {
+              Ok(token) => Ok(token),
+              Err(message) => Err(message)
+          }
+      },
+      Err(message) => Err(message)
   }
 }

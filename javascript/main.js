@@ -47,9 +47,87 @@ function renderItems(items, processType, elementId, processFunction) {
   // inserts the placeholder into the HTML
   document.getElementById(elementId).innerHTML = placeholder;
 
-  // Defines event listeners based on click for each ID for each individual to do item button
+  // loops through each item and defines an event listener on button click for each ID
   for (i = 0; i < itemsMeta.length; i++) {
     document.getElementById(itemsMeta[i]["id"])
             .addEventListener("click", processFunction);
   }
+}
+
+/**
+ * This function interacts with our API methods to interact with the item list
+ * 
+ * @param {*} url {string} - the API endpoint to call
+ * @param {*} method {string} - the HTTP method to use
+ * @returns {XMLHttpRequest} - the request object that was made to the API
+ */
+
+function apiCall(url, method) {
+  let xhr = new XMLHttpRequest()
+  xhr.withCredentials = true;
+
+  // Defines an event listener that renders to do items with JSON data for the API responses
+  xhr.addEventListener('readystatechange', function() {
+    if (this.readyState === this.DONE) {
+      renderItems(JSON.parse(this.responseText)["pending_items"], "edit", "pendingItems", editItem);
+      renderItems(JSON.parse(this.responseText)["done_items"], "delete", "doneItems", deleteItem);
+    }
+  });
+
+  // Preps the API call object with the correct URL and method
+  xhr.open(method, url);
+  xhr.setRequestHeader('content-type', 'application/json');
+  xhr.setRequestHeader('user-token', 'token'); // TODO: add proper authentication
+  return xhr
+}
+
+/**
+ * This function gets the title from `this` and calls the edit API end point
+ */
+
+function editItem() {
+  let title = this.id.replaceAll("-", " ").replace("edit ", "");
+  let call = apiCall("/item/edit", "PUT");
+  let json = {
+    "title": title, 
+    "status": "done"
+  };
+  call.send(JSON.stringify(json));
+}
+
+/**
+ * This function gets the title from `this` and calls the delete API end point
+ */
+
+function deleteItem() {
+  let title = this.id.replaceAll("-", " ").replace("delete ", "");
+  let call = apiCall("/item/delete", "POST");
+  let json = {
+    "title": title,
+    "status": done
+  };
+  call.send(JSON.stringify(json));
+}
+
+/**
+ * Loads the to do items to page by calling the `get` API endpoint
+ */
+
+function getItems() {
+  let call = apiCall("/item/get", 'GET');
+  call.send()
+}
+getItems();
+
+// Adds a create button that calls the createItem function on click
+document.getElementById("create-button").addEventListener("click", createItem);
+
+/**
+ * This function defines the create text input and button and calls the create API end point
+ */
+function createItem() {
+  let title = document.getElementById("name");
+  let call = apiCall("item/create/" + title.value, "POST");
+  call.send();
+  document.getElementById("name").value = null;
 }
