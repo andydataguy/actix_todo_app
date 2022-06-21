@@ -26,14 +26,16 @@ function renderItems(items, processType, elementId, processFunction) {
 
     // Creates HTML format for the item. Adds the placeholderId to a button and 
     // inserts text for the type of process to expect
-    placeholder += "<div>" 
-                + title 
-                + "<button " 
+    placeholder += '<div class="itemContainer">' 
+                + '<p>'
+                + title
+                + '</p>' 
+                + '<div class="actionButton" ' 
                 + 'id="' 
                 + placeholderId 
                 + '">' 
                 + processType 
-                + '</button>' 
+                + '</div>' 
                 + "</div>";
 
     // pushes the to do item into the itemsMeta array now configured for HTML
@@ -63,7 +65,7 @@ function renderItems(items, processType, elementId, processFunction) {
  */
 
 function apiCall(url, method) {
-  let xhr = new XMLHttpRequest()
+  let xhr = new XMLHttpRequest();
   xhr.withCredentials = true;
 
   // Defines an event listener that renders to do items with JSON data for the API responses
@@ -71,6 +73,8 @@ function apiCall(url, method) {
     if (this.readyState === this.DONE) {
       renderItems(JSON.parse(this.responseText)["pending_items"], "edit", "pendingItems", editItem);
       renderItems(JSON.parse(this.responseText)["done_items"], "delete", "doneItems", deleteItem);
+      document.getElementById("completeNum").innerHTML = JSON.parse(this.responseText)["done_item_count"];
+      document.getElementById("pendingNum").innerHTML = JSON.parse(this.responseText)["pending_item_count"];
     }
   });
 
@@ -104,7 +108,7 @@ function deleteItem() {
   let call = apiCall("/item/delete", "POST");
   let json = {
     "title": title,
-    "status": done
+    "status": "done"
   };
   call.send(JSON.stringify(json));
 }
